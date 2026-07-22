@@ -1,0 +1,21 @@
+Scenario ID,Module,Test Scenario,Expected Result,Status
+TS001,Registration,Register with valid details,User account created successfully,Not Executed
+TS002,Registration,Register with an existing email,Appropriate error message displayed,Not Executed
+TS003,Registration,Leave mandatory fields empty,Validation messages displayed,Not Executed
+TS004,Registration,Enter invalid email format,Email validation message shown,Not Executed
+TS005,Registration,Enter weak password,Password policy message displayed,Not Executed
+TS006,Login,Login with valid credentials,User redirected to dashboard,Not Executed
+TS007,Login,Login with invalid password,Invalid credentials message displayed,Not Executed
+TS008,Login,Login with unregistered email,User not authenticated,Not Executed
+TS009,Login,Verify account lock after multiple failed attempts,Account locked according to business rule,Not Executed
+TS010,Appointment Booking,Book appointment with available slot,Appointment booked successfully,Not Executed
+TS011,Appointment Booking,Book already occupied slot,Booking prevented with proper message,Not Executed
+TS012,Appointment Booking,Book appointment using past date,Validation error displayed,Not Executed
+TS013,Appointment Booking,Book appointment without selecting provider,Booking not allowed,Not Executed
+TS014,Appointment Booking,Verify available slots refresh after booking,Booked slot unavailable to others,Not Executed
+TS015,Payment,Complete payment with valid card,Payment successful and booking confirmed,Not Executed
+TS016,Payment,Payment with invalid card details,Payment rejected,Not Executed
+TS017,Payment,Network interruption during payment,Proper error handling displayed,Not Executed
+TS018,Appointment Management,Cancel confirmed appointment,Appointment cancelled successfully,Not Executed
+TS019,Appointment Management,Reschedule appointment to available slot,Appointment updated successfully,Not Executed
+TS020,Appointment History,View appointment history,All previous appointments displayed correctly,Not Executed
