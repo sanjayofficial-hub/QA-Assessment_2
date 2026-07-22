@@ -1,0 +1,16 @@
+API Name,Test Scenario,Request Payload,Expected Status Code,Validation Points
+POST /api/register,Register with valid details,"{""name"":""John"",""email"":""john@gmail.com"",""password"":""Test@123""}",201 Created,Verify user registered successfully and success message.
+POST /api/register,Register with existing email,"{""name"":""John"",""email"":""john@gmail.com"",""password"":""Test@123""}",409 Conflict,Verify 'Email already exists' message.
+POST /api/register,Register with empty fields,"{""name"":"""",""email"":"""",""password"":""""}",400 Bad Request,Verify mandatory field validations.
+POST /api/login,Login with valid credentials,"{""email"":""john@gmail.com"",""password"":""Test@123""}",200 OK,Verify login success and token received.
+POST /api/login,Login with wrong password,"{""email"":""john@gmail.com"",""password"":""Wrong123""}",401 Unauthorized,Verify invalid credentials message.
+POST /api/login,Login with invalid email,"{""email"":""abc@gmail.com"",""password"":""Test@123""}",404 Not Found,Verify user not found message.
+POST /api/appointments,Book appointment with valid details,"{""providerId"":""101"",""date"":""25-07-2026"",""time"":""10:00 AM""}",201 Created,Verify appointment created and auth token required.
+POST /api/appointments,Book without Authorization,Valid Payload,401 Unauthorized,Verify unauthorized access.
+POST /api/appointments,Book already reserved slot,"{""providerId"":""101"",""date"":""25-07-2026"",""time"":""10:00 AM""}",409 Conflict,Verify duplicate booking message.
+POST /api/payments,Payment with valid details,"{""appointmentId"":""101"",""amount"":""500""}",200 OK,Verify payment success and transaction ID.
+POST /api/payments,Payment with invalid card,"{""appointmentId"":""101"",""card"":""123456""}",400 Bad Request,Verify payment failed message.
+POST /api/payments,Payment without Authorization,Valid Payload,401 Unauthorized,Verify unauthorized access.
+GET /api/appointments/history,View appointment history,No Request Body,200 OK,Verify appointments displayed.
+GET /api/appointments/history,View history without token,No Request Body,401 Unauthorized,Verify unauthorized access.
+GET /api/appointments/history,View history with no appointments,No Request Body,200 OK,Verify empty list returned.
