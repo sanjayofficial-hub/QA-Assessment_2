@@ -1,0 +1,39 @@
+Test Case ID,Module,Test Case Title,Preconditions,Test Steps,Expected Result,Priority
+TC_AB_001,Appointment Booking,Verify successful appointment booking with valid details,User is registered and logged into the application. Provider has available slots.,"1. Login to the application.
+2. Navigate to Appointment Booking.
+3. Select a service provider.
+4. Select a valid future date.
+5. Choose an available time slot.
+6. Click Book Appointment.",Appointment should be booked successfully and a confirmation message should be displayed with booking details.,High
+TC_AB_002,Appointment Booking,Verify appointment booking with a past date,User is logged in.,"1. Navigate to Appointment Booking.
+2. Select a provider.
+3. Select a past date.
+4. Choose any available time slot.
+5. Click Book Appointment.",System should not allow booking and should display a validation message indicating an invalid appointment date.,High
+TC_AB_003,Appointment Booking,Verify booking without selecting a time slot,User is logged in.,"1. Navigate to Appointment Booking.
+2. Select a provider.
+3. Select a valid future date.
+4. Do not select a time slot.
+5. Click Book Appointment.",System should display a validation message asking the user to select a time slot.,High
+TC_AB_004,Appointment Booking,Verify duplicate appointment booking,"User already has a confirmed appointment for the same provider, date and time slot.","1. Login to the application.
+2. Navigate to Appointment Booking.
+3. Select the same provider.
+4. Select the same date and time slot.
+5. Click Book Appointment.",System should prevent duplicate booking and display an appropriate error message.,High
+TC_PAY_001,Payment,Verify successful payment for booked appointment,Appointment is booked and awaiting payment.,"1. Click Proceed to Payment.
+2. Enter valid payment details.
+3. Click Pay Now.",Payment should be completed successfully and appointment status should change to Confirmed.,High
+TC_PAY_002,Payment,Verify payment with invalid card details,Appointment is awaiting payment.,"1. Navigate to Payment page.
+2. Enter invalid card number or CVV.
+3. Click Pay Now.",Payment should fail and an appropriate error message should be displayed.,High
+TC_PAY_003,Payment,Verify session expiry during payment process,User session is active and appointment is awaiting payment.,"1. Open the Payment page.
+2. Keep the page idle until the session expires.
+3. Click Pay Now.",User should be redirected to the Login page with a session expired message. Payment should not be processed.,High
+TC_PAY_004,Payment,Verify payment cancellation by the user,User is on the Payment page.,"1. Click Proceed to Payment.
+2. Click Cancel Payment before completing the transaction.",Payment process should be cancelled and appointment should remain in Pending Payment status.,Medium
+TC_PAY_005,Payment,Verify payment during network interruption,User is on the Payment page.,"1. Enter valid payment details.
+2. Disconnect the internet connection.
+3. Click Pay Now.",Payment should not be completed. System should display an  error message without charging the customer twice.,High
+TC_AB_005,Appointment Management,Verify booked appointment appears in appointment history,User has successfully completed appointment booking and payment.,"1. Login to the application.
+2. Navigate to Appointment History.
+3. Verify the latest appointment details.","Newly booked appointment should be displayed with correct provider name, appointment date, time slot, and status as Confirmed.",Medium
